@@ -7,19 +7,19 @@ guard :shell do
   # Watch tests files
   watch(%r{^.+_?[sS]pec\.php$}) do |m|
     #execute phpspec, path may change
-    system("./bin/phpspec run #{m[0]}")
+    system("./bin/phpspec run --no-code-generation #{m[0]}")
 
     #Output command used to run phpspec for debugging
-    "./bin/phpspec run #{m[0]}"
+    "./bin/phpspec run --no-code-generation #{m[0]}"
   end
 
   # Watch library files and run their tests
   watch(%r{^src/(.+)\.php}) do |m|
     #execute phpspec, path may change
-    system("./bin/phpspec run ./spec/#{m[1]}Spec.php")
+    system("./bin/phpspec run --no-code-generation ./spec/#{m[1]}Spec.php")
 
     #Output command used to run phpspec for debugging
-    "./bin/phpspec run ./spec/#{m[1]}Spec.php"
+    "./bin/phpspec run --no-code-generation ./spec/#{m[1]}Spec.php"
   end
 end
 
